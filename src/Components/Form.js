@@ -6,9 +6,11 @@ function Form({ data, setData }) {
     const inputElement = useRef(null);
     const submitForm = (e) => {
         e.preventDefault();
-        
-        setData([...data, { label: inputElement.current.value, complated: false }]);
-        inputElement.current.value = '';
+
+        if (inputElement.current.value) {
+            setData([...data, { label: inputElement.current.value, complated: false }]);
+            inputElement.current.value = '';
+        }
     }
 
 
