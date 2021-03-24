@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 
 
-function ListItem({ todo }) {
+function ListItem({ todo, deleteTodo, updateTodoChecked }) {
+
+    const [check, setCheck] = useState(false);
+    const checked = useRef(false);
+
+    const changeCheckbox = () => {
+        setCheck(checked.current.checked)
+        updateTodoChecked(todo.id)
+    }
+
+
+
     return (
-        <label>
-            <input type="checkbox" />
-            <span>{todo.label}</span>
-        </label>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <label>
+                <input
+                    type="checkbox"
+                    onChange={changeCheckbox}
+                    ref={checked}
+                    defaultChecked={check}
+                />
+                <span>{todo.label}</span>
+            </label>
+            <span onClick={() => deleteTodo(todo.id)}>X</span>
+        </div>
     )
 }
 

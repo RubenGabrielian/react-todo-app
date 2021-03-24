@@ -1,15 +1,14 @@
 import React from 'react';
 import ListItem from './ListItem';
 
-function List({ data, setSata }) {
+function List({ data, setSata, deleteTodo, updateTodoChecked }) {
     return (
         <div>
             {data.map((item, i) => {
                 return (
-                    <ListItem todo={item} key={i} />
+                    <ListItem todo={item} deleteTodo={deleteTodo} updateTodoChecked={updateTodoChecked} key={i} />
                 );
             })}
-
         </div>
     );
 }

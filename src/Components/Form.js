@@ -8,7 +8,7 @@ function Form({ data, setData }) {
         e.preventDefault();
 
         if (inputElement.current.value) {
-            setData([...data, { label: inputElement.current.value, complated: false }]);
+            setData([...data, { id: Date.now(), label: inputElement.current.value, complated: false }]);
             inputElement.current.value = '';
         }
     }
